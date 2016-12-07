@@ -8,6 +8,8 @@
     <modules>
         <module>dubbo-commons</module>
         <module>dubbo-2.5.3</module>
+        <module>dubbo-2.8.4-rest</module>
+        <module>dubbo-2.8.4-rpc</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -28,15 +30,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
         <dependency>
             <groupId>com.101tec</groupId>
@@ -46,6 +42,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <version>4.3.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
             <version>4.3.2.RELEASE</version>
         </dependency>
         <dependency>
@@ -59,9 +60,9 @@
             <version>4.3.2.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>4.3.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>

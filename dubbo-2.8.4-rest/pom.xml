@@ -7,38 +7,68 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dubbo-2.5.3</artifactId>
+    <artifactId>dubbo-2.8.4-rest</artifactId>
     <packaging>jar</packaging>
 
-    <name>dubbo-2.5.3</name>
+    <name>dubbo-2.8.4-rest</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <docker.image.version>2.5.3</docker.image.version>
+        <dubbo.version>2.8.4</dubbo.version>
+        <docker.image.version>2.8.4-rest</docker.image.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.a.eye</groupId>
-            <artifactId>dubbo-commons</artifactId>
-            <version>${parent.version}</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbox</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.0.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>8.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>8.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.1</version>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>docker-dubbo-2.5.3</finalName>
+        <finalName>docker-dubbo-2.8.4</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -58,7 +88,7 @@
                                 </transformer>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.a.eye.skywalking.dubbo.Main</mainClass>
+                                    <mainClass>com.a.eye.skywalking.dubbo.ServerMain</mainClass>
                                 </transformer>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
@@ -81,9 +111,9 @@
                             <goal>build</goal>
                         </goals>
                         <configuration>
-                            <imageName>skywalking/docker-dubbo-scenario</imageName>
+                            <imageName>skywalking/docker-dubbox-scenario</imageName>
                             <imageTags>
-                                <imageTag>2.5.3</imageTag>
+                                <imageTag>${docker.image.version}</imageTag>
                             </imageTags>
                             <dockerDirectory>${project.basedir}/docker</dockerDirectory>
                             <resources>

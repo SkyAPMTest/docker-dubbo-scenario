@@ -1,6 +1,6 @@
 package com.a.eye.skywalking.dubbo;
 
-import com.a.eye.skywalking.dubbo.provider.GreetService;
+import com.a.eye.skywalking.dubbo.provider.interfaces.GreetService;
 import fi.iki.elonen.NanoHTTPD;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class DubboConsumerHttpServer extends NanoHTTPD {
         try {
             String msg = "<html><body>\n";
             Map<String, String> parms = session.getParms();
-            msg += "<p>Hello, " + applicationContext.getBean(GreetService.class).sayHello() + "!</p>";
+            msg += "<p>Hello, " + applicationContext.getBean(GreetService.class).doBusiness() + "!</p>";
             return newFixedLengthResponse(msg + "</body></html>\n");
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,7 +37,7 @@ public class DubboConsumerHttpServer extends NanoHTTPD {
     }
 
     public static void startServer() throws IOException {
-        applicationContext = new ClassPathXmlApplicationContext("classpath*:consumer/dubbo-consumer.xml");
+        applicationContext = new ClassPathXmlApplicationContext("classpath*:consumer/consumer.xml");
         applicationContext.start();
         new DubboConsumerHttpServer();
     }
