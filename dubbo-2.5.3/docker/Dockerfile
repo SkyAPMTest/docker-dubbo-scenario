@@ -1,7 +1,7 @@
 FROM zookeeper:3.4.9
 
 ENV SERVER_LIST=127.0.0.1:34000 \
-    USER_ID=test \
+    USER_NAME=test \
     APPLICATION_CODE=test
 
 RUN  mkdir /dubbo & mkdir -p /usr/local/agent

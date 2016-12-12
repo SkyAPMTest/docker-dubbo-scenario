@@ -14,7 +14,6 @@ import java.util.Map;
  */
 public class DubboConsumerHttpServer extends NanoHTTPD {
 
-    private static Logger logger = LoggerFactory.getLogger(DubboConsumerHttpServer.class);
     private static ClassPathXmlApplicationContext applicationContext;
 
     private DubboConsumerHttpServer() throws IOException {
@@ -31,7 +30,6 @@ public class DubboConsumerHttpServer extends NanoHTTPD {
             return newFixedLengthResponse(msg + "</body></html>\n");
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("Failed to generate result page.", e);
         }
         return newFixedLengthResponse("Failed");
     }

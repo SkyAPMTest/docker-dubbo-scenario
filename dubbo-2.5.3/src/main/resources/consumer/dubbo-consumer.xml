@@ -6,6 +6,6 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="skywalking-consumer"/>
-    <dubbo:reference id="greetService" interface="com.a.eye.skywalking.dubbo.provider.GreetService" url="dubbo://localhost:20880"/>
+    <dubbo:reference id="greetService" interface="com.a.eye.skywalking.dubbo.provider.GreetService" url="dubbo://localhost:20880" timeout="3000"/>
 
 </beans>

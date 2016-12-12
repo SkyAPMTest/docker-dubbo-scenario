@@ -9,6 +9,6 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <dubbo:protocol name="dubbo" port="20880"/>
     <bean id="greetService" class="com.a.eye.skywalking.dubbo.provider.GreetServiceImpl"/>
-    <dubbo:service interface="com.a.eye.skywalking.dubbo.provider.GreetService" ref="greetService"/>
+    <dubbo:service interface="com.a.eye.skywalking.dubbo.provider.GreetService" ref="greetService" timeout="3000"/>
 
 </beans>
