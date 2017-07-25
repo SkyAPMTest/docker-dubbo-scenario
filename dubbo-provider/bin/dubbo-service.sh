@@ -7,7 +7,7 @@ PRGDIR=`dirname "$PRG"`
 AGENT_FILE_PATH=$DUBBO_PROVIDER_HOME/agent
 
 if [ -f "$AGENT_FILE_PATH/skywalking-agent.jar" ];then
-    DUBBO_PROVIDER_OPTS=" -javaagent:$AGENT_FILE_PATH/skywalking-agent.jar "
+    DUBBO_PROVIDER_OPTS=" -javaagent:$AGENT_FILE_PATH/skywalking-agent.jar -DconfigPath=/usr/local/dubbox-provider/agent-config"
 fi
 
 _RUNJAVA=${JAVA_HOME}/bin/java
@@ -19,4 +19,6 @@ do
     CLASSPATH="$i:$CLASSPATH"
 done
 
-$JAVA_HOME/bin/java -classpath "$CLASSPATH" $DUBBO_PROVIDER_OPTS org.skywaking.apm.testcase.dubbo.provider.Main
+JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+
+$JAVA_HOME/bin/java $JAVA_OPTS -classpath "$CLASSPATH" $DUBBO_PROVIDER_OPTS org.skywaking.apm.testcase.dubbo.provider.Main

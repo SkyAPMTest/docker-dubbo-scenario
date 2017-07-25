@@ -12,6 +12,7 @@ COPY sky-walking.config /usr/local/dubbox-provider/agent-config/sky-walking.conf
 RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 20880
+EXPOSE 5005
 VOLUME /usr/local/dubbox-provider/agent
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/local/dubbox-provider/bin/dubbo-service.sh"]

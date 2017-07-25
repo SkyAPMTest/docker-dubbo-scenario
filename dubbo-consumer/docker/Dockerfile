@@ -4,12 +4,14 @@ ENV COLLECTOR_SERVER=127.0.0.1:12800 \
     ZK_ADDRESS=127.0.0.1:2181
 
 COPY catalina.sh /usr/local/tomcat/bin/
-ADD dubbox-consumer /usr/local/tomcat/webapps/dubbox-cases
+ADD dubbox-consumer /usr/local/tomcat/webapps/dubbox-case
 COPY sky-walking.config /usr/local/tomcat/agent-config/sky-walking.config
-COPY dubbo-consumer.xml /usr/local/tomcat/webapps/dubbox-cases/WEB-INF/classes/
+COPY dubbo-consumer.xml /usr/local/tomcat/webapps/dubbox-case/WEB-INF/classes/
 
 ADD docker-entrypoint.sh /
 RUN chmod +x /usr/local/tomcat/bin/catalina.sh && chmod +x /docker-entrypoint.sh
+
+EXPOSE 5005
 
 VOLUME /usr/local/tomcat/agent
 ENTRYPOINT ["/docker-entrypoint.sh"]
