@@ -7,7 +7,7 @@ PRGDIR=`dirname "$PRG"`
 AGENT_FILE_PATH=$DUBBO_PROVIDER_HOME/agent
 
 if [ -f "$AGENT_FILE_PATH/skywalking-agent.jar" ];then
-    DUBBO_PROVIDER_OPTS=" -javaagent:$AGENT_FILE_PATH/skywalking-agent.jar -DconfigPath=/usr/local/dubbox-provider/agent-config"
+    DUBBO_PROVIDER_OPTS=" -javaagent:$AGENT_FILE_PATH/skywalking-agent.jar -Dconfig=/usr/local/dubbox-provider/agent-config"
 fi
 
 _RUNJAVA=${JAVA_HOME}/bin/java
