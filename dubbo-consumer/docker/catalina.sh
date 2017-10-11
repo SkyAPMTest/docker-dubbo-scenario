@@ -106,7 +106,7 @@
 
 export AGENT_FILE_PATH=/usr/local/tomcat/agent
 if [ -f "${AGENT_FILE_PATH}/skywalking-agent.jar" ]; then
-    CATALINA_OPTS="$CATALINA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -javaagent:${AGENT_FILE_PATH}/skywalking-agent.jar -DconfigPath=/usr/local/tomcat/agent-config"
+    CATALINA_OPTS="$CATALINA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -javaagent:${AGENT_FILE_PATH}/skywalking-agent.jar -Dconfig=/usr/local/tomcat/agent-config"
 fi
 
 # OS specific support.  $var _must_ be set to either true or false.
