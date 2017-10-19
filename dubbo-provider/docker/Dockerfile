@@ -7,7 +7,6 @@ ADD dubbox-provider.tar.gz /usr/local
 
 COPY docker-entrypoint.sh /
 COPY dubbo-provider.xml /usr/local/dubbox-provider/config/
-COPY sky-walking.config /usr/local/dubbox-provider/agent-config/sky-walking.config
 
 RUN chmod +x /docker-entrypoint.sh
 

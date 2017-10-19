@@ -5,7 +5,6 @@ ENV COLLECTOR_SERVER=127.0.0.1:12800 \
 
 COPY catalina.sh /usr/local/tomcat/bin/
 ADD dubbox-consumer /usr/local/tomcat/webapps/dubbox-case
-COPY sky-walking.config /usr/local/tomcat/agent-config/sky-walking.config
 COPY dubbo-consumer.xml /usr/local/tomcat/webapps/dubbox-case/WEB-INF/classes/
 
 ADD docker-entrypoint.sh /
